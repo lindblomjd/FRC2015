@@ -40,4 +40,37 @@ public class Robot extends IterativeRobot {
     
     }
     
+    /*
+     * The following are the general functions used by our robot.
+     * 
+     */
+    public void gripContainer()
+    {
+    	
+    }
+    
+    public void releaseContainer()
+    {
+    	
+    }
+    
+    public void liftTote()
+    {
+    	
+    }
+    
+    public void lowerTote()
+    {
+    	
+    }
+    
+    public void moveDistance(float distanceToMove)
+    {
+    	
+    }
+    
+    public void rotate(float angleToRotate)
+    {
+    	
+    }
 }
