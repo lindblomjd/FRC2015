@@ -1,3 +1,4 @@
+//HIIIIIII//
 package org.usfirst.frc.team1781.robot;
 //bruh
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -14,7 +15,7 @@ public class Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-    public void robotInit() {
+    public void robotInit() { //hi
 
     }
 
