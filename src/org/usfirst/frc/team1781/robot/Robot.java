@@ -1,6 +1,8 @@
 package org.usfirst.frc.team1781.robot;
  
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Talon;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -14,7 +16,17 @@ public class Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
+	
+	//add variables here
+	Talon leftMotor;
+	Joystick driverJoystick, liftOperatorJoystick;
+	
+	
+	//initialize variables in RobotInit()
     public void robotInit() { 
+    	leftMotor = new Talon(0);
+    	driverJoystick = new Joystick(0);
+    	liftOperatorJoystick = new Joystick(1);
 
     }
 
@@ -69,6 +81,11 @@ public class Robot extends IterativeRobot {
     }
     
     public void rotate(float angleToRotate)
+    {
+    	
+    }
+    
+    public void driveRobot()
     {
     	
     }
