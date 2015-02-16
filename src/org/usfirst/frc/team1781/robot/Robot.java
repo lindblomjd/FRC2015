@@ -21,6 +21,7 @@ public class Robot extends IterativeRobot {
 	//add variables here
 	Talon leftMotor;
 	Talon pulleymotor;
+	Talon CollectiveRightMotor, CollectiveLeftMotor;
 	Joystick driverJoystick, liftOperatorJoystick;
 	DigitalInput RSensor,LSensor;
 	Talon pivotMotor; 
@@ -38,11 +39,16 @@ public class Robot extends IterativeRobot {
     	liftOperatorJoystick = new Joystick(1);
     	RSensor = new DigitalInput (1);
     	LSensor = new DigitalInput (2);
+
     	pivotMotor = new Talon(4);
     	digitalInputCW = new DigitalInput (4);
     	digitalInputCCW = new DigitalInput (5);
     	digitalInputCWBackUp = new DigitalInput (6); 
     	digitalInputCCWBackUp = new DigitalInput (7);
+
+    	CollectiveRightMotor = new Talon(1);
+    	CollectiveLeftMotor = new Talon(2);
+    	
 
     }
 
@@ -83,7 +89,15 @@ public class Robot extends IterativeRobot {
     
     public void pullContainer()
     {
-    	
+    	if (liftOperatorJoystick.getRawButton(3) == true)
+    	{
+    	CollectiveRightMotor.set(-1); //counter clockwise
+    	CollectiveLeftMotor.set(1); //clockwise
+    	}else 
+    	{
+    		CollectiveRightMotor.set(0); //stops
+    		CollectiveLeftMotor.set(0);
+    	}
     }
     
     public void pushContainer()
