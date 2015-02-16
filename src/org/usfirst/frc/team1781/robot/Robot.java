@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1781.robot;
  
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
@@ -19,14 +20,19 @@ public class Robot extends IterativeRobot {
 	
 	//add variables here
 	Talon leftMotor;
+	Talon pulleymotor;
 	Joystick driverJoystick, liftOperatorJoystick;
+	DigitalInput RSensor,LSensor;
 	
 	
 	//initialize variables in RobotInit()
     public void robotInit() { 
     	leftMotor = new Talon(0);
+    	pulleymotor = new Talon (1);
     	driverJoystick = new Joystick(0);
     	liftOperatorJoystick = new Joystick(1);
+    	RSensor = new DigitalInput (1);
+    	LSensor = new DigitalInput (2);
 
     }
 
@@ -65,14 +71,28 @@ public class Robot extends IterativeRobot {
     	
     }
     
-    public void liftTote()
+    public void liftTote ()
     {
-    	
+    	if (liftOperatorJoystick.getRawButton(2))
+    		{pulleymotor.set(0.5);
+    		if (LSensor.get() == false && RSensor.get()== true)
+    				{pulleymotor.set(0);}}
+    	if (liftOperatorJoystick.getRawButton(3))
+    		{pulleymotor.set(0.5);
+    		if (LSensor.get()==true && RSensor.get()==true)
+    				{pulleymotor.set(0);}}
     }
     
     public void lowerTote()
-    {
-    	
+    { 
+    	if (liftOperatorJoystick.getRawButton(1) && LSensor.get()==true || LSensor.get()==false)
+    		{pulleymotor.set(-0.5);
+    		if (LSensor.get() == true && RSensor.get() == false)
+				{pulleymotor.set(0);}}
+    	if (liftOperatorJoystick.getRawButton(2) && LSensor.get()==true)
+    		{pulleymotor.set(-0.5);
+    		if (LSensor.get() == false && RSensor.get()== true)
+				{pulleymotor.set(0);}}
     }
     
     public void moveDistance(float distanceToMove)
