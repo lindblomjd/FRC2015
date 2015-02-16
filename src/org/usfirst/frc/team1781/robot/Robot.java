@@ -23,6 +23,11 @@ public class Robot extends IterativeRobot {
 	Talon pulleymotor;
 	Joystick driverJoystick, liftOperatorJoystick;
 	DigitalInput RSensor,LSensor;
+	Talon pivotMotor; 
+	DigitalInput digitalInputCW;
+	DigitalInput digitalInputCCW;
+	DigitalInput digitalInputCWBackUp;
+	DigitalInput digitalInputCCWBackUp;
 	
 	
 	//initialize variables in RobotInit()
@@ -33,6 +38,11 @@ public class Robot extends IterativeRobot {
     	liftOperatorJoystick = new Joystick(1);
     	RSensor = new DigitalInput (1);
     	LSensor = new DigitalInput (2);
+    	pivotMotor = new Talon(4);
+    	digitalInputCW = new DigitalInput (4);
+    	digitalInputCCW = new DigitalInput (5);
+    	digitalInputCWBackUp = new DigitalInput (6); 
+    	digitalInputCCWBackUp = new DigitalInput (7);
 
     }
 
@@ -118,5 +128,44 @@ public class Robot extends IterativeRobot {
     public void driveRobot()
     {
     	
+    }
+    public void pivotFoward()
+    {
+    	if (digitalInputCCW.get() == false && digitalInputCCWBackUp.get() == false)
+    	{
+    		pivotMotor.set(-0.25);
+    	}
+    	else if (digitalInputCCW.get() == true || digitalInputCCWBackUp.get() == true)
+    	{
+    		pivotMotor.set(0);
+    	}	
+    	/*else if (digitalInputCCW.get() == true && digitalInputCCWBackUp.get() == true)
+    	{
+    		pivotMotor.set(0);
+    	}*/
+    	else 
+    	{
+    		pivotMotor.set(0);
+    	}
+    }
+    
+    public void pivotTurn()
+    {
+    	if (digitalInputCW.get() == false && digitalInputCWBackUp.get() == false)
+    	{
+    		pivotMotor.set(0.25);
+    	}
+    	else if (digitalInputCW.get() == true || digitalInputCWBackUp.get() == true)
+    	{
+    		pivotMotor.set(0);
+    	}
+    	/*else if (digitalInputCW.get() == true && digitalInputCWBackUp.get() == true)
+    	{
+    		pivotMotor.set(0);
+    	}*/
+    	else
+    	{
+    		pivotMotor.set(0);
+    	}
     }
 }
