@@ -46,8 +46,8 @@ public class Robot extends IterativeRobot {
     	digitalInputCWBackUp = new DigitalInput (6); 
     	digitalInputCCWBackUp = new DigitalInput (7);
 
-    	CollectiveRightMotor = new Talon(1);
-    	CollectiveLeftMotor = new Talon(2);
+    	CollectiveRightMotor = new Talon(2);
+    	CollectiveLeftMotor = new Talon(3);
     	
 
     }
