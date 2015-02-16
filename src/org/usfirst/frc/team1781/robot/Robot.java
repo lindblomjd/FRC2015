@@ -65,6 +65,16 @@ public class Robot extends IterativeRobot {
     	
     }
     
+    public void pullContainer()
+    {
+    	
+    }
+    
+    public void pushContainer()
+    {
+    	
+    }
+    
     public void liftTote()
     {
     	
