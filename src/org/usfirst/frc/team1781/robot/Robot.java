@@ -71,7 +71,17 @@ public class Robot extends IterativeRobot {
     	
     }
     
-    public void liftTote ()
+    public void pullContainer()
+    {
+    	
+    }
+    
+    public void pushContainer()
+    {
+    	
+    }
+    
+    public void liftTote()
     {
     	if (liftOperatorJoystick.getRawButton(2))
     		{pulleymotor.set(0.5);
