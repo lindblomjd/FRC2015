@@ -19,6 +19,11 @@ public class Robot extends IterativeRobot {
 	 */
 
 	// add variables here
+	Talon frontLeftMotor;
+	Talon frontRightMotor;
+	Talon rearLeftMotor;
+	Talon rearRightMotor;
+	
 	Talon leftMotor;
 	Talon pulleymotor;
 	Talon CollectiveRightMotor, CollectiveLeftMotor;
@@ -32,6 +37,14 @@ public class Robot extends IterativeRobot {
 
 	// initialize variables in RobotInit()
 	public void robotInit() {
+		
+		frontLeftMotor = new Talon(1);
+    	frontRightMotor = new Talon(2);
+    	rearLeftMotor = new Talon(5);
+    	rearRightMotor = new Talon(8);
+    	driverJoystick = new Joystick(0);
+    	liftOperatorJoystick = new Joystick(1);
+		
 		leftMotor = new Talon(0);
 		pulleymotor = new Talon(1);
 		driverJoystick = new Joystick(0);
@@ -142,6 +155,56 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void driveRobot() {
+		
+		double FLMV = ((driverJoystick.getY())+(driverJoystick.getX()));
+    	if (FLMV<-1)
+    	{
+    		FLMV = -1;
+    	}
+    	if (FLMV>1)
+    	{
+    		FLMV = 1;
+    	}
+    	double FRMV = (-driverJoystick.getY()+(driverJoystick.getX()));
+    	if (FRMV<-1)
+    	{
+    		FRMV =-1;
+    	}
+    	if (FRMV>1)
+    	{
+    		FRMV = 1;
+    	}
+    	
+    	double RLMV = ((driverJoystick.getY())+(driverJoystick.getX()));
+    	if (RLMV<-1)
+    	{
+    		RLMV = -1;
+    	}
+    	if (RLMV>1)
+    	{
+    		RLMV = 1;
+    	}
+    	double RRMV = (-driverJoystick.getY()+(driverJoystick.getX()));
+    	if (RRMV<-1)
+    	{
+    		RRMV =-1;
+    	}
+    	if (RRMV>1)
+    	{
+    		RRMV = 1;
+    	}
+    	
+    	System.out.println(driverJoystick.getX()+";"+driverJoystick.getY()+";"+FLMV+"/"+FRMV);
+    	
+    	frontLeftMotor.set(FLMV*.5);
+    	rearLeftMotor.set(RLMV*.5);
+    	frontRightMotor.set(FRMV*.5);
+    	rearRightMotor.set(RRMV*.5);
+    
+    	/*frontLeftMotor.set(-(driverJoystick.getX()));
+    	rearLeftMotor.set(-(driverJoystick.getX()));
+    	frontRightMotor.set(-(driverJoystick.getX()));
+    	rearRightMotor.set(-(driverJoystick.getX()));*/
 
 	}
 
